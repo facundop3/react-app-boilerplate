@@ -7,10 +7,14 @@ export function handleErrors({ attributesErrors, errors }, setError) {
 
   if (attributesErrors && Object.keys(attributesErrors).length) {
     setError(
-      Object.keys(attributesErrors).map((fieldName) => ({
-        message: capitalize(attributesErrors[fieldName][0]),
-        name: fieldName,
-      }))
+      Object.keys(attributesErrors).map((fieldName) => {
+        return {
+          message: attributesErrors?.[fieldName].length
+            ? capitalize(attributesErrors?.[fieldName][0])
+            : '',
+          name: fieldName,
+        };
+      })
     );
   }
 }
