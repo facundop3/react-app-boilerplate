@@ -7,7 +7,7 @@ import AuthService from 'api/AuthService';
 import Form from 'components/Form';
 import { handleErrors } from 'helpers/errors';
 
-import styles from './Settings.module.scss';
+import { FormBody, FormButton, SuccessText } from './Settings.styles';
 
 const ChangePasswordForm = () => {
   const intl = useIntl();
@@ -29,28 +29,23 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <Form
-      formMethods={formMethods}
-      className={styles.settingsForm}
-      onSubmit={onSubmit}
-    >
+    <FormBody formMethods={formMethods} onSubmit={onSubmit}>
       <Form.Input
         label={intl.messages['common.newPassword']}
         name="password"
         type="password"
         data-testid="password-input-settings"
       />
-      <Form.Button
+      <FormButton
         data-testid="submit-password-button"
-        className={styles.button}
         text={intl.messages['common.updatePassword']}
       />
       {isResponseSuccess && (
-        <p className={styles.success}>
+        <SuccessText>
           <FormattedMessage id="common.changePasswordSuccess" />
-        </p>
+        </SuccessText>
       )}
-    </Form>
+    </FormBody>
   );
 };
 

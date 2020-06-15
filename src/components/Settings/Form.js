@@ -9,7 +9,7 @@ import { handleErrors } from 'helpers/errors';
 import { useUser } from 'hooks/auth';
 import { updateUser } from 'actions/auth';
 
-import styles from './Settings.module.scss';
+import { FormBody, FormButton, SuccessText } from './Settings.styles';
 
 const SettingsForm = () => {
   const dispatch = useDispatch();
@@ -41,11 +41,7 @@ const SettingsForm = () => {
   };
 
   return (
-    <Form
-      formMethods={formMethods}
-      className={styles.settingsForm}
-      onSubmit={onSubmit}
-    >
+    <FormBody formMethods={formMethods} onSubmit={onSubmit}>
       <Form.Input name="firstName" data-testid="firstName-input" />
       <Form.Input name="lastName" data-testid="lastName-input" />
       <Form.Select
@@ -56,17 +52,16 @@ const SettingsForm = () => {
         ]}
         data-testid="locale-input"
       />
-      <Form.Button
+      <FormButton
         data-testid="submit-settings-button"
-        className={styles.button}
         text={intl.messages['common.updateSettings']}
       />
       {isResponseSuccess && (
-        <p className={styles.success}>
+        <SuccessText>
           <FormattedMessage id="common.updateSettingsSuccess" />
-        </p>
+        </SuccessText>
       )}
-    </Form>
+    </FormBody>
   );
 };
 
