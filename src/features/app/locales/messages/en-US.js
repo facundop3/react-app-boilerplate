@@ -1,4 +1,4 @@
-export default {
+const enUS = {
   common: {
     accountSettings: 'Account settings',
     alreadyHaveAnAccount: 'Already have an account?',
@@ -47,3 +47,4 @@ export default {
     updateSettingsSuccess: 'Your settings have been updated successfully',
   },
 };
+export default enUS;
